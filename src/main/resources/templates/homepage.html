@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title >Homepage</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body>
+        <h1>List Staff</h1>
+        
+        <table th:border="1">
+            <thead>
+            <th>Staff ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Role</th>
+            </thead>
+            <tbody>
+                <tr th:each="staff : ${listStaff}">
+                    <td th:text="${staff.staffId}"></td>
+                    <td th:text="${staff.email}"></td>
+                    <td th:text="${staff.staffName}"></td>
+                    <td th:text="${staff.staffAddress}"></td>
+                    <td th:text="${staff.isAdmin}?'Admin':'User'"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div><h1>If Else </h1></div>
+        
+       <table th:border="1">
+            <thead>
+            <th>Staff ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Role</th>
+            </thead>
+            <tbody>
+                <tr th:each="staff : ${listStaff}">
+                    <td th:text="${staff.staffId}"></td>
+                    <td th:text="${staff.email}"></td>
+                    <td th:text="${staff.staffName}"></td>
+                    <td th:text="${staff.staffAddress}"></td>
+                    <td th:if="${staff.isAdmin}" >
+                        Admin
+                    </td>
+                    <td th:unless="${staff.isAdmin}">
+                        User
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+             <div><h1>Switch case </h1></div>
+        
+       <table th:border="1">
+            <thead>
+            <th>Staff ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Role</th>
+            </thead>
+            <tbody>
+                <tr th:each="staff : ${listStaff}">
+                    <td th:text="${staff.staffId}"></td>
+                    <td th:text="${staff.email}"></td>
+                    <td th:text="${staff.staffName}"></td>
+                    <td th:text="${staff.staffAddress}"></td>
+                    
+                    <td th:switch="${staff.isAdmin}" >
+                        <span th:case="true" th:text="Admin" style="color: red"> </span>
+                        <span th:case="false" th:text="User"> </span>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    
+    
+
+</html>

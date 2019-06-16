@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "title"
+        },
+        "th:replace": {
+            "context": "title"
+        }
+    }
+}
