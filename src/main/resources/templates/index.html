@@ -33,8 +33,11 @@
                         </div>
 
                         <div class="text-center p-t-45 p-b-4">
-                                                    <div th:if="${loginError}" style="color: red;font-weight: bold; text-align: center" th:text="'Email or password was wrong.Please try again!'"></div>
-
+                            <div th:if="${loginError}" style="color: red;font-weight: bold; text-align: center" th:text="'Email or password was wrong.Please try again!'"></div>
+                            <br>
+                            <div th:text=" 'You can <strong>stop</strong> me now' "></div>
+                            <div th:utext="'You can <strong>stop</strong> me now' "></div>
+                            <br>
                             <span class="txt1">
                                 Forgot
                             </span>

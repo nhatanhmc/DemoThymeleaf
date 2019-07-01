@@ -6,31 +6,42 @@
 package com.example.ThymeleafDemo.controller;
 
 import com.example.ThymeleafDemo.service.StaffService;
+import com.sun.net.httpserver.HttpServer;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeController {
+
     @Autowired
     @Lazy
     private StaffService staffService;
-    
+
     @GetMapping(value = "/")
-    public String homePage(){
-        return "index";
-    };
+    public ModelAndView homePage() throws Exception {
+        throw new Exception();
+    }
+
+    ;
+//    public String homePage(){
+//        return "index";
+//    };
       @GetMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "index";
-    };
+    }
+
+    ;
     @PostMapping(value = "/check-login")
-    public String checkLogin(String email,String password,RedirectAttributes redirectAttrs){
-       String result = staffService.checkLogin(email, password);
+    public String checkLogin(String email, String password, RedirectAttributes redirectAttrs) {
+        String result = staffService.checkLogin(email, password);
         switch (result) {
             case "FAIL": {
                 redirectAttrs.addFlashAttribute("loginError", true);
@@ -44,11 +55,15 @@ public class HomeController {
                 return "redirect:/login";
         }
 
-   }
-        @GetMapping(value = "/home")
-    public String listStaff(ModelMap map){
-           map.addAttribute("listStaff", staffService.getAllStaff());
-            System.out.println("abc");
+    }
+
+    @GetMapping(value = "/home")
+    public String listStaff(ModelMap map) {
+        map.addAttribute("listStaff", staffService.getAllStaff());
+        System.out.println("abc");
         return "homepage";
-    };
+    }
+
+    ;
+   
 }
